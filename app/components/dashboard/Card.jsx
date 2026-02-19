@@ -88,39 +88,39 @@ const Card = () => {
   const { pendingCount, codPendingCount } = useOrderContext();
   // console.log(process.env.NEXT_PUBLIC_MERCHANT_API_KEY);
   
-  // useEffect(() => {
-  //   const fetchDashboardData = async () => {
-  //     try {
-  //       setApiLoading(true);
-  //       const stored = localStorage.getItem('token');
-  //       const token = stored ? JSON.parse(stored).token : null;
-  //       const res = await fetch(
-  //         `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/dashboard-button-list`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //             'Content-Type': 'application/json',
-  //           },
-  //         },
-  //       );
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setApiLoading(true);
+        const stored = localStorage.getItem('token');
+        const token = stored ? JSON.parse(stored).token : null;
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/dashboard-button-list`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
 
-  //       const data = await res.json();
-  //       console.log(data);
+        const data = await res.json();
+        console.log(data);
         
 
-  //       if (data?.success) {
-  //         setDashboardData(data.data);
-  //       }
-  //     } catch (error) {
-  //       console.error('API Error:', error);
-  //     } finally {
-  //       setApiLoading(false);
-  //       setDataLoaded(true); 
-  //     }
-  //   };
+        if (data?.success) {
+          setDashboardData(data.data);
+        }
+      } catch (error) {
+        console.error('API Error:', error);
+      } finally {
+        setApiLoading(false);
+        setDataLoaded(true); 
+      }
+    };
 
-  //   fetchDashboardData();
-  // }, []);
+    fetchDashboardData();
+  }, []);
   // useEffect(() => {
   //   const fetchDashboardData = async () => {
   //     try {
