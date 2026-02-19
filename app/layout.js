@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { UserProvider } from './api/UserProvider/UserProvider';
 import { OrderProvider } from './contexts/OrderContext';
-
+const appName = process.env.NEXT_PUBLIC_APP_NAME;
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Foorti Courier ',
+  title: `${appName} Courier `,
   description: 'The dashboard interface',
 };
 
