@@ -43,8 +43,11 @@ const NotificationBell = () => {
         },
       });
       
-      if (!res.ok) throw new Error('Failed to fetch');
-      
+     if (!res.ok) {
+        const errorText = await res.text(); // Get the HTML/Text error from the server
+        console.error(`Backend Error (${res.status}):`, errorText); // Print it so you can see it!
+        return; // Stop execution here
+      }
       const data = await res.json();
       
       // Validate and process notifications

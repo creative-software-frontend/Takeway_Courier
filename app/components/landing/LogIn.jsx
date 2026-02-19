@@ -290,8 +290,18 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+
   const handleLogin = async e => {
     e.preventDefault();
+
+    const apiKey = process.env.NEXT_PUBLIC_MERCHANT_API_KEY;
+    console.log("API Key found:", apiKey); // If this says 'undefined', the build didn't pick up your .env
+
+    if (!apiKey) {
+      alert("Environment variable is missing! Restart your dev server.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -312,7 +322,7 @@ const Login = () => {
         // Store previous token to help with detection
         const previousToken = localStorage.getItem('token');
         localStorage.setItem('previousToken', previousToken || '');
-        
+
         if (typeof data.token === 'object') {
           localStorage.setItem('token', JSON.stringify(data.token));
         } else {
