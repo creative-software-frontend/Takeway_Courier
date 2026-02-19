@@ -7,11 +7,13 @@ const Footer = () => {
   const tFooter = useTranslations('homePage.footer');
 
   // Contact Number
-  const contactNumber = "09611-901131";
-  
+  const contactNumber = process.env.NEXT_PUBLIC_CONTACT_NUMBER;
+const currentYear = new Date().getFullYear(); // This will automatically pull "2026"
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
+
   // Company Description
   const companyDescription = "Passed to ensure these COD constraints & a reduction assessment will apply every million customers. Have any option?";
-
+ 
   const footerLinks = [
     {
       title: tFooter('titleOne'),
@@ -185,7 +187,7 @@ const Footer = () => {
           <div className="flex items-center justify-center">
             <span className="text-md text-secondary">
               <a target="_blank" href="https://creativesoftware.com.bd/" rel="noopener noreferrer">
-                {tFooter('copyRight')}
+                &copy; {companyName} {currentYear}, All rights reserved.
               </a>
             </span>
           </div>
